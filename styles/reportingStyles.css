@@ -1,0 +1,109 @@
+:root {
+    --primary-color: rgb(50, 55, 118);
+    --secondary-color: rgb(230, 165, 19);
+    --background-color: rgb(255, 255, 255);
+    --text-color: rgb(250, 245, 236);
+    --form-bg-color: rgba(30, 30, 30, 0.9);
+}
+
+body {
+    margin: 0;
+    font-family: "Garamond", "Georgia", serif;
+    background-color: var(--background-color);
+    background-size: cover;
+    background-position: center;
+    color: var(--form-bg-color);
+}
+
+header {
+    background: var(--primary-color);
+    color: var(--text-color);
+    padding: 20px;
+    align-items: center;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+    border-bottom: 3px solid var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+header .title {
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+header img {
+    height: 70px;
+    position: absolute;
+    left: 5%;
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(250, 245, 236, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+.activity,
+.dateLodge,
+.hours,
+.name,
+.category {
+    margin-top: 10px;
+}
+
+.name,
+.dateLodge {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text,
+.select {
+    width: 48%;
+}
+
+button {
+    background: linear-gradient(var(--secondary-color), rgb(163, 125, 30));
+    color: var(--form-bg-color);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+    border: none;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 7px;
+    border: 2px solid rgb(140, 102, 27);
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.container button:hover {
+    background: linear-gradient(rgb(163, 125, 30), rgb(140, 102, 27));
+    transform: scale(1.01);
+}
+
+.bg-iframe {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    z-index: -1;
+}
+
+@media (max-width: 1350px) {
+    .title {
+        display: none;
+    }
+
+    header img {
+        position: static;
+    }
+}
