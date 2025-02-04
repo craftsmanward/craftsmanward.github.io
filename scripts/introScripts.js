@@ -35,7 +35,7 @@ if (isFirstTime) {
             textContainer.innerText = line;
             gsap.to(textContainer, { opacity: 1, duration: 2, ease: "power2.inOut" });
 
-            await new Promise((resolve) => setTimeout(resolve, 4000));
+            await new Promise((resolve) => setTimeout(resolve, 2000));
         }
 
         let delay = 1000;
@@ -45,8 +45,8 @@ if (isFirstTime) {
         }
 
         // Final phrase
-        textContainer.innerText = "Let there be Light";
-        gsap.to(textContainer, { opacity: 1, duration: 2, ease: "power2.inOut" });
+        await fadeText("Let there be Light", delay);
+
 
         await new Promise((resolve) => setTimeout(resolve, 2000));
         const lightBurst = document.getElementById("light-burst");
