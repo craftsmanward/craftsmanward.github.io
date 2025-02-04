@@ -35,13 +35,13 @@ if (isFirstTime) {
             textContainer.innerText = line;
             gsap.to(textContainer, { opacity: 1, duration: 2, ease: "power2.inOut" });
 
-            await new Promise((resolve) => setTimeout(resolve, 2000));
+            await new Promise((resolve) => setTimeout(resolve, 3000));
         }
 
         let delay = 1000;
         for (const line of genesisLines) {
-            await fadeText(line, delay);
-            delay += 1000;
+            await fadeText(line, 1000);
+            /* delay += 1000; */
         }
 
         // Final phrase
