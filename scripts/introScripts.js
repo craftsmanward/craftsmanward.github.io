@@ -48,7 +48,7 @@ if (isFirstTime) {
 
         setTimeout(() => {
             console.log("Redirecting to homepage...");
-            window.location.href = 'webpages_Beta/reportingPlanets.html';
+            window.location.href = '/main/reportingPlanets.html';
         }, 9000);
     }, delay);
     let lastRippleTime = 0;
