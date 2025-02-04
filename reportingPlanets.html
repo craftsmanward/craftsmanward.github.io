@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Hours Reporting</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        :root {
+            --primary-color: rgb(50, 55, 118);
+            --secondary-color: rgb(230, 165, 19);
+            --background-color: rgb(255, 255, 255);
+            --text-color: rgb(250, 245, 236);
+            --form-bg-color: rgba(30, 30, 30, 0.9);
+        }
+
+        body {
+            margin: 0;
+            font-family: "Garamond", "Georgia", serif;
+            background-color: var(--background-color);
+            background-size: cover;
+            background-position: center;
+            color: var(--form-bg-color);
+        }
+
+        header {
+            background: var(--primary-color);
+            color: var(--text-color);
+            padding: 20px;
+            align-items: center;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+            border-bottom: 3px solid var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        header .title {
+            margin: 0;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        header img {
+            height: 70px;
+            position: absolute;
+            left: 5%;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgba(250, 245, 236, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        .activity,
+        .dateLodge,
+        .hours,
+        .name,
+        .category {
+            margin-top: 10px;
+        }
+
+        .name,
+        .dateLodge {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .text,
+        .select {
+            width: 48%;
+        }
+
+        button {
+            background: linear-gradient(var(--secondary-color), rgb(163, 125, 30));
+            color: var(--form-bg-color);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+            border: none;
+            font-weight: bold;
+            padding: 10px;
+            margin-top: 20px;
+            width: 100%;
+            border-radius: 7px;
+            border: 2px solid rgb(140, 102, 27);
+            transition: all 0.1s ease-in-out;
+            cursor: pointer;
+        }
+
+        .container button:hover {
+            background: linear-gradient(rgb(163, 125, 30), rgb(140, 102, 27));
+            transform: scale(1.01);
+        }
+
+        .bg-iframe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            z-index: -1;
+        }
+
+        @media (max-width: 1350px) {
+            .title {
+                display: none;
+            }
+
+            header img {
+                position: static;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <iframe class="bg-iframe" scrolling="no"
+        src="http://slowe.github.io/VirtualSky/embed?longitude=-118.641231&latitude=45.4077722&projection=stereo&constellations=false&constellationlabels=true&constellationboundaries=false&showstarlabels=true&scalestars=1.4&magnitude=6&live=true&az=90&negative=false"
+        allowTransparency="true"></iframe>
+    <header class="maskBottom">
+        <img src="images\logo.png" alt="Lodge Logo">
+        <h1 class="title">Oregon AF&AM Distric 20 Hours Reporting</h1>
+    </header>
+
+    <div class="container">
+        <h2 class="text-center mb-4">Report Your Volunteer Hours</h2>
+        <form>
+            <div class="name">
+                <div class="text">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                </div>
+                <div class="text">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                </div>
+            </div>
+            <div class="dateLodge">
+                <div class="select">
+                    <label for="lodgeName">Name of Lodge</label>
+                    <select class="form-control" id="lodgeName" name="lodgeName">
+                        <option value="blueMountain">La Grande #41</option>
+                        <option value="grv">Grande Ronde Valley #56</option>
+                        <option value="hiram">Hiram #67</option>
+                        <option value="joseph">Joseph #81</option>
+                        <option value="cove">Cove #91</option>
+                    </select>
+                </div>
+                <div class="select">
+                    <label for="date">Date of Service:</label>
+                    <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+            </div>
+            <div class="hours">
+                <label for="hours">Number of Hours:</label>
+                <input type="number" class="form-control" id="hours" name="hours" min="1" required>
+            </div>
+            <div class="activity">
+                <label for="activity">Activity Description:</label>
+                <textarea class="form-control" id="activity" name="activity" rows="4" required></textarea>
+            </div>
+            <div class="category">
+                <label for="category">Category:</label>
+                <select class="form-control" id="category" name="category">
+                    <option value="community_service">Community Service</option>
+                    <option value="lodge_event">Lodge Event</option>
+                    <option value="charitable_work">Charitable Work</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <button type="submit">Submit Hours</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
