@@ -1,0 +1,43 @@
+Volunteer Hours Reporting Form
+==================================================
+
+First Name: John
+Last Name: Doe
+Lodge Name: La Grande #41
+Date of Service: 2025-01-15
+Number of Hours: 5
+Activity Description: Assisted with community clean-up
+Category: Community Service
+--------------------------------------------------
+First Name: Jane
+Last Name: Smith
+Lodge Name: Grande Ronde Valley #56
+Date of Service: 2025-01-18
+Number of Hours: 3
+Activity Description: Helped at lodge fundraiser
+Category: Lodge Event
+--------------------------------------------------
+First Name: Michael
+Last Name: Johnson
+Lodge Name: Hiram #67
+Date of Service: 2025-02-01
+Number of Hours: 4
+Activity Description: Volunteered at food bank
+Category: Charitable Work
+--------------------------------------------------
+First Name: Emily
+Last Name: Davis
+Lodge Name: Joseph #81
+Date of Service: 2025-02-03
+Number of Hours: 2
+Activity Description: Participated in school outreach
+Category: Community Service
+--------------------------------------------------
+First Name: Robert
+Last Name: Brown
+Lodge Name: Cove #91
+Date of Service: 2025-02-05
+Number of Hours: 6
+Activity Description: Helped with lodge maintenance
+Category: Lodge Event
+--------------------------------------------------

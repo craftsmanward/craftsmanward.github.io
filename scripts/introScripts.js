@@ -1,73 +1,81 @@
-// Check if the user is visiting for the first time
+// Check if the user is visiting for the first time using localStorage
 function checkFirstVisit() {
-    if (document.cookie.split(';').some((item) => item.trim().startsWith('visited='))) {
-        return true; // User has visited before
-    } else {
-        document.cookie = "visited=true; max-age=31536000; path=/"; // 1 year expiry
-        return true; // First-time visit
-    }
+    if (document.cookie.includes("visited=true")) return true;
+    
+    document.cookie = "visited=true; max-age=31536000; path=/"; // Store cookie for 1 year
+    return false; // First-time visit
 }
 
 const isFirstTime = checkFirstVisit();
 
 if (isFirstTime) {
-    const textContainer = document.getElementById('text');
-    console.log("Text container loaded:", textContainer);
+    document.addEventListener("DOMContentLoaded", async () => {
+        const textContainer = document.getElementById("text");
+        if (!textContainer) {
+            console.warn("Text container not found");
+            return;
+        }
 
-    const genesisLines = [
-        "In the beginning God created the heaven and the earth.",
-        "And the earth was without form, and void; and darkness was upon the face of the deep.",
-        "And the Spirit of God moved upon the face of the waters.",
-        "And God said,"
-    ];
+        console.log("Text container loaded:", textContainer);
 
-    let delay = 2000; // Initial delay of 3 seconds
+        const genesisLines = [
+            "In the beginning God created the heaven and the earth.",
+            "And the earth was without form, and void; and darkness was upon the face of the deep.",
+            "And the Spirit of God moved upon the face of the waters.",
+            "And God said,"
+        ];
 
-    genesisLines.forEach((line, index) => {
-        setTimeout(() => {
+        async function fadeText(line, delay) {
+            await new Promise((resolve) => setTimeout(resolve, delay));
             console.log("Displaying line:", line);
-            textContainer.style.opacity = 0;
+            
+            gsap.to(textContainer, { opacity: 0, duration: 2, ease: "power2.inOut" });
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+
             textContainer.innerText = line;
             gsap.to(textContainer, { opacity: 1, duration: 2, ease: "power2.inOut" });
-        }, delay);
 
-        setTimeout(() => {
-            gsap.to(textContainer, { opacity: 0, duration: 2, ease: "power2.inOut" });
-        }, delay + 4000);
+            await new Promise((resolve) => setTimeout(resolve, 4000));
+        }
 
-        delay += 6000; // 5 seconds for fade in/out + 1 second delay -- CHANGE THIS TO 6000 AFTER TESTING
-    });
+        let delay = 1000;
+        for (const line of genesisLines) {
+            await fadeText(line, delay);
+            delay += 1000;
+        }
 
-    setTimeout(() => {
+        // Final phrase
         textContainer.innerText = "Let there be Light";
         gsap.to(textContainer, { opacity: 1, duration: 2, ease: "power2.inOut" });
-        setTimeout(() => {
-            document.getElementById('light-burst').classList.remove('hidden');
+
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        const lightBurst = document.getElementById("light-burst");
+        if (lightBurst) {
+            lightBurst.classList.remove("hidden");
             gsap.to("#light-burst", { opacity: 1, duration: 2 });
-        }, 2000);
+        }
 
-        setTimeout(() => {
-            console.log("Redirecting to homepage...");
-            window.location.href = '/reportingPlanets.html';
-        }, 9000);
-    }, delay);
+        await new Promise((resolve) => setTimeout(resolve, 7000));
+        console.log("Redirecting to homepage...");
+        window.location.href = "/reportingPlanets.html";
+    });
+
+    // Optimized ripple effect using requestAnimationFrame
     let lastRippleTime = 0;
-        const rippleDelay = 50; // Delay in milliseconds
+    document.addEventListener("mousemove", (e) => {
+        const now = performance.now();
+        if (now - lastRippleTime < 50) return;
+        lastRippleTime = now;
 
-        document.addEventListener("mousemove", function (e) {
-            const now = Date.now();
-            if (now - lastRippleTime < rippleDelay) return;
-            lastRippleTime = now;
-            
+        requestAnimationFrame(() => {
             const ripple = document.createElement("div");
             ripple.classList.add("ripple");
             document.body.appendChild(ripple);
-            
+
             ripple.style.left = `${e.clientX - 10}px`;
             ripple.style.top = `${e.clientY - 10}px`;
-            
-            ripple.addEventListener("animationend", () => {
-                ripple.remove();
-            });
+
+            ripple.addEventListener("animationend", () => ripple.remove());
         });
+    });
 }
