@@ -1,6 +1,8 @@
 // Check if the user is visiting for the first time using localStorage
 function checkFirstVisit() {
-    if (document.cookie.includes("visited=true")) return true;
+    if (document.cookie.split('; ').some(cookie => cookie === "visited=true")) {
+        return true; // Not first visit
+    }
     
     document.cookie = "visited=true; max-age=31536000; path=/"; // Store cookie for 1 year
     return false; // First-time visit

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Hours Reporting</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="\styles\reportingStyles.css">
+</head>
+
+<body>
+    <iframe class="bg-iframe" scrolling="no"
+        src="https://slowe.github.io/VirtualSky/embed?longitude=-118.641231&latitude=45.4077722&projection=stereo&constellations=false&constellationlabels=true&constellationboundaries=false&showstarlabels=true&scalestars=1.4&magnitude=6&live=true&az=90&negative=false"
+        allowTransparency="true" onload="this.style.opacity = '1';"></iframe>
+    <header class="maskBottom">
+        <img src="\images\Header-Name_with-G.png" alt="Lodge Logo">
+        <h1 class="title">Oregon AF&AM Distric 20 Volunteer Reporting</h1>
+    </header>
+
+    <div class="container">
+        <h2 class="text-center mb-4">Report Your Volunteer Hours</h2>
+        <form>
+            <div class="name">
+                <div class="text">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                </div>
+                <div class="text">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                </div>
+            </div>
+            <div class="dateLodge">
+                <div class="select">
+                    <label for="lodgeName">Name of Lodge</label>
+                    <select class="form-control" id="lodgeName" name="lodgeName">
+                        <option value="blueMountain">La Grande #41</option>
+                        <option value="grv">Grande Ronde Valley #56</option>
+                        <option value="hiram">Hiram #67</option>
+                        <option value="joseph">Joseph #81</option>
+                        <option value="cove">Cove #91</option>
+                    </select>
+                </div>
+                <div class="select">
+                    <label for="date">Date of Service:</label>
+                    <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+            </div>
+            <div class="hours">
+                <label for="hours">Number of Hours:</label>
+                <input type="number" class="form-control" id="hours" name="hours" min="1" required>
+            </div>
+            <div class="activity">
+                <label for="activity">Activity Description:</label>
+                <textarea class="form-control" id="activity" name="activity" rows="4" required></textarea>
+            </div>
+            <div class="category">
+                <label for="category">Category:</label>
+                <select class="form-control" id="category" name="category">
+                    <option value="community_service">Community Service</option>
+                    <option value="lodge_event">Lodge Event</option>
+                    <option value="charitable_work">Charitable Work</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <button type="submit">Submit Hours</button>
+        </form>
+    </div>
+</body>
+
+</html>
